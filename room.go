@@ -37,3 +37,9 @@ func (r *room) run(){
 		}
 	}
 }
+
+const (
+	socketBufferSize = 1024
+	messageBufferSize = 256
+)
+
