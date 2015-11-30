@@ -67,3 +67,14 @@ func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	go client.write()
 	client.read()
 }
+
+
+// newRoom makes a new room that is ready to go.
+func newRoom() *room {
+	return &room{
+		forward: make(chan []byte),
+		join: 	 make(chan *client),
+		leave: 	 make(chan *client),
+		clients: make(map[*client]book),
+	}
+}
