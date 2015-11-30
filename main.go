@@ -28,12 +28,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	r := newRoom()
 	// root
 	http.Handle("/", &templateHandler{filename: "chat.html"})
-
+	http.Hanlde("/room", r)
+	//get the room going
+	go r.run()
 	// start the web server
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
-   
+
 }
