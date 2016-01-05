@@ -20,7 +20,7 @@
         if (!window["webSocket"]){
           alert("Error: Your browser does not suppert web sockets.")
         } else {
-          socket = new WebSocket("ws://localhost:8080/room");
+          socket = new WebSocket("ws://{{.Host}}/room");
           socket.onclose = function() {
             alert("Connection has been close.");
           }
